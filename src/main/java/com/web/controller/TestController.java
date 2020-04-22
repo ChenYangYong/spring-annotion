@@ -44,6 +44,9 @@ public class TestController {
      * 一个为true，1个为false。这个ServletModelAttributeMethodProcessor处理参数支持@ModelAttribute注解，
      * annotationNotRequired属性为true的话，参数不是简单类型就通过，因此选择了ServletModelAttributeMethodProcessor，
      * 最终通过DataBinder实例化Employee对象，并写入对应的属性。
+     *
+     * * 该方法同样能接收参数放在body中 ，但需要将请求头设置为：Content-Type: application/x-www-form-urlencoded
+     *    此时请求头和body中的参数都能被解析
      * @param e
      * @return
      */
@@ -63,6 +66,8 @@ public class TestController {
      * missing value会触发MissingServletRequestParameterException异常
      *
      * 解决方案：去掉@RequestParam注解，让ServletModelAttributeMethodProcessor来处理。
+     *
+
      * @param e
      * @return
      */
@@ -97,5 +102,18 @@ public class TestController {
     @ResponseBody
     public Date testDate(Date date) {
         return date;
+    }
+
+    /**
+     * @RequestParam 可以从url中取值，也可以从body中取值，只要名字对应的上，
+     * body中取值时，请求头设置为：Content-Type: application/x-www-form-urlencoded
+     * @param name
+     * @param age
+     * @return
+     */
+    @RequestMapping("/testRequestParam")
+    @ResponseBody
+    public Employee testRequestParam(@RequestParam String name,@RequestParam int age) {
+        return new Employee(name,age);
     }
 }
