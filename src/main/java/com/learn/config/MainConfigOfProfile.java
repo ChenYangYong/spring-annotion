@@ -37,7 +37,7 @@ public class MainConfigOfProfile implements EmbeddedValueResolverAware {
     public DataSource dataSourceUat() throws Exception{
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser(username);
-        dataSource.setPassword("EMall@1234");
+        dataSource.setPassword("123456");
         dataSource.setJdbcUrl("jdbc:mysql://10.23.13.106:3306/boci_web");
         dataSource.setDriverClass(driverClass);
         return dataSource;
@@ -47,7 +47,7 @@ public class MainConfigOfProfile implements EmbeddedValueResolverAware {
     public DataSource dataSourceProd() throws Exception{
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setUser(username);
-        dataSource.setPassword("EMall@1234");
+        dataSource.setPassword("123456");
         dataSource.setJdbcUrl("jdbc:mysql://10.23.5.124:3306/boci_web");
         dataSource.setDriverClass(driverClass);
         return dataSource;
